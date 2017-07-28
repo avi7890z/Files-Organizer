@@ -1,2 +1,3 @@
 # hello
-hello world test
+I am learning how to use github... 
+I think I am very late but at least I am here..
