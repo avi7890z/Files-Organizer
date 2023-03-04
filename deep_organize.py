@@ -5,7 +5,7 @@ import shutil
 file_formats = {
         "Photos" : ["webp","jpg","jpeg","png","heic","opus","webp","bmp","tiff"],
         "Audios" : ["mp3","aac","pcm","wav","aiff","wma","alac","flac"],
-        "Videos" : ["mov,mp4","flv","avi","mov","wmv","mkv","webm"],
+        "Videos" : ["mov","mp4","flv","avi","mov","wmv","mkv","webm"],
         "Documents" : ["doc","docx","xls","xlsx","pdf","rtf","txt"],
         "Compressed" : ["rar","7z","zip","tar","gzip"],
         "Misc" : ["This folder will be used to store any other file types"]
