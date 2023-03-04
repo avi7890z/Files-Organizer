@@ -1,7 +1,6 @@
 import os
 import shutil
 
-
 # generic file formats for different file types
 file_formats = {
         "Photos" : ["webp","jpg","jpeg","png","heic","opus","webp","bmp","tiff"],
@@ -72,8 +71,6 @@ def fetch_all_objects(dir,files):
 
 if __name__ == "__main__":
     files = []
-    # INPUT_DIR = r"B:\phone backup\Download"
-    # OUTPUT_DIR = "B:\organized_data"
     
     INPUT_DIR = input("Please enter directory to organize (exlude last slash) : ")
     OUTPUT_DIR = input("Please enter directory where to keep the organized files : ")
@@ -81,5 +78,3 @@ if __name__ == "__main__":
     items = fetch_all_objects(INPUT_DIR,files)
     storage = create_storage_folders(OUTPUT_DIR)
     organize_objects(items,OUTPUT_DIR)
-
-
