@@ -1,4 +1,5 @@
-# Simple files organizer
-Using Python 3
+Files Organizer
 
-Input :: just pass the location of the folder which you want to organize.
+Problem : Whenever we have a lot of data, for example the data can be in downloaded folder then the type of files vary a lot or if we have a folder inside folder or files across multiple folders of same type, finding a specific, let's say a document or an image becomes a hassle.
+
+Solution : This files organizer can take any folder as input and output and can categorize the files based on the file type, if the file type is not there, then this organizer puts the file in the Misc Directory.
