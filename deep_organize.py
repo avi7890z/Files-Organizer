@@ -19,7 +19,7 @@ def create_storage_folders(output_dir):
             print(f"ALREADY_EXISTS :: {create_dir}")
         else:
             os.mkdir(create_dir)
-            print(f"CREATED :: {create_dir}")
+            print(f"CREATED_DIR :: {create_dir}")
     print("All storage directories are created/exists.")
 
 
