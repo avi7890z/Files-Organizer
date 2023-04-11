@@ -14,17 +14,17 @@ file_formats = {
 # this will create folders to store different types of files such as photos, videos, etc.
 def create_storage_folders(output_dir):
     for key in file_formats.keys():
-        create_dir = os.path.join(output_dir,key.upper())
+        create_dir = os.path.join(output_dir,key)
         if os.path.isdir(create_dir):
-            print(f"ALREADY_EXISTS :: {create_dir}")
+            print(f"ALREADY_EXISTS - {create_dir}")
         else:
             os.mkdir(create_dir)
-            print(f"CREATED_DIR :: {create_dir}")
-    print("All storage directories are created/exists.")
+            print(f"CREATED_DIR - {create_dir}")
+    print("All storage directories are created.")
 
 
 # this function organizes the objects into multiple directories based on the file type
-def organize_objects(items,OUTPUT_DIR):
+def organize_objects(items,OUTPUT_DIR,MOVE_OR_COPY):
     urorganized_objects = []
     organized_type = []
     for item in items:
@@ -34,10 +34,13 @@ def organize_objects(items,OUTPUT_DIR):
                 if extention in file_formats[key]:
                     # copying object to the specific type directory
                     try:
-                        shutil.copy(item, os.path.join(OUTPUT_DIR,key))
+                        if MOVE_OR_COPY=="m":
+                            shutil.move(item, os.path.join(OUTPUT_DIR,key))
+                        else:
+                            shutil.copy(item, os.path.join(OUTPUT_DIR,key))
                         # shutil.move(item, os.path.join(OUTPUT_DIR,key))
                     except:
-                        print(f"Duplicate File :: {item}")
+                        print(f"Duplicate File - {item}")
 
                     organized_type.append(key)
         else:
@@ -45,15 +48,15 @@ def organize_objects(items,OUTPUT_DIR):
                 shutil.copy(item, os.path.join(OUTPUT_DIR,"Misc"))
                 # shutil.move(item, os.path.join(OUTPUT_DIR,key))
             except:
-                print(f"Duplicate File :: {item}")
+                print(f"Duplicate File - {item}")
             urorganized_objects.append(item)
     
     print(f"\nOrganized a total of {len(organized_type)} known files for you in below folders:-")
-    print(f"Photos :: {organized_type.count('Photos')}",end=" | ")
-    print(f"Audios :: {organized_type.count('Audios')}",end=" | ")
-    print(f"Videos :: {organized_type.count('Videos')}",end=" | ")
-    print(f"Documents :: {organized_type.count('Documents')}",end=" | ")
-    print(f"Compressed :: {organized_type.count('Compressed')}")
+    print(f"Photos - {organized_type.count('Photos')}",end=" | ")
+    print(f"Audios - {organized_type.count('Audios')}",end=" | ")
+    print(f"Videos - {organized_type.count('Videos')}",end=" | ")
+    print(f"Documents - {organized_type.count('Documents')}",end=" | ")
+    print(f"Compressed - {organized_type.count('Compressed')}")
     print(f"\nOrganized a total of {len(urorganized_objects)} unknown files for you in [Misc] directory.")
 
 
@@ -74,7 +77,8 @@ if __name__ == "__main__":
     
     INPUT_DIR = input("Please enter directory to organize (exlude last slash) : ")
     OUTPUT_DIR = input("Please enter directory where to keep the organized files : ")
+    MOVE_OR_COPY = input("Please enter m for Move or c for Copy : ")
 
     items = fetch_all_objects(INPUT_DIR,files)
     storage = create_storage_folders(OUTPUT_DIR)
-    organize_objects(items,OUTPUT_DIR)
+    organize_objects(items,OUTPUT_DIR,MOVE_OR_COPY)
